@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13194fa27fc54d32ba89d47e13071f9, type: 3}
+  m_Name: MediumShip
+  m_EditorClassIdentifier: 
+  ShipSpeed: 75
+  ShipCapacity: 200
+  ShipLevel: 1
+  ShipPrefab: {fileID: 8696274221271287712, guid: aa0e6cf205e714ecabc1077a5584541e, type: 3}
+  ShipIcon: {fileID: 21300000, guid: 41bba7b1adb1b45c8bbab5c7cad46afa, type: 3}
+  DockParent: {fileID: 0}
