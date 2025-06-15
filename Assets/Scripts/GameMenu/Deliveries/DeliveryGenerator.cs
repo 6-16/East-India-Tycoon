@@ -35,12 +35,12 @@ public class DeliveryGenerator : IDisposable
 
     private void Subscribe()
     {
-        _timeController.OnNewPlayweekEvent += GenerateWeeklyDeliveryOrder;
+        _timeController.OnNewPlayweekEvent += GenerateWeeklyDeliveryOrders;
     }
 
     private void UnSubscribe()
     {
-        _timeController.OnNewPlayweekEvent -= GenerateWeeklyDeliveryOrder;
+        _timeController.OnNewPlayweekEvent -= GenerateWeeklyDeliveryOrders;
     }
 
     private async Task GeneratingDeliveryOrders(CancellationToken token)
@@ -72,8 +72,8 @@ public class DeliveryGenerator : IDisposable
     {
         var newDeliveryOrder = new DeliveryOrder();
         newDeliveryOrder.DeliveryWaitingTimer = _basicOrderWaitingTime;
-        newDeliveryOrder.DeliveryCargoCapacity = UnityEngine.Random.Range(30, 150);
-        newDeliveryOrder.DeliveryDistance = UnityEngine.Random.Range(15, 250);
+        newDeliveryOrder.DeliveryCargoCapacity = UnityEngine.Random.Range(40, 300);
+        newDeliveryOrder.DeliveryDistance = UnityEngine.Random.Range(40, 400);
         newDeliveryOrder.DeliveryPayment = (newDeliveryOrder.DeliveryDistance * 2) + (newDeliveryOrder.DeliveryCargoCapacity * 2);
 
         OnDeliveryOrderGeneration?.Invoke(newDeliveryOrder);
@@ -82,10 +82,11 @@ public class DeliveryGenerator : IDisposable
         
     }
 
-    private void GenerateWeeklyDeliveryOrder()
+    private void GenerateWeeklyDeliveryOrders()
     {
         if (_deliveriesPresenter.HasFreeDeliverySlots())
         {
+            GenerateDeliveryOrder();
             GenerateDeliveryOrder();
         }
         else
@@ -96,6 +97,8 @@ public class DeliveryGenerator : IDisposable
 
     private void CallInitialOrders()
     {
+        GenerateDeliveryOrder();
+
         GenerateDeliveryOrder();
 
         GenerateDeliveryOrder();

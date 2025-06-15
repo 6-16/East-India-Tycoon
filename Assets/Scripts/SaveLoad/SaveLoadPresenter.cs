@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class SaveLoadPresenter
 {
     private readonly SaveLoadService _saveLoadService;
@@ -41,12 +43,12 @@ public class SaveLoadPresenter
         try
         {
             _saveLoadService.SaveGame(_resourcesModel, _harborModel, _timeController);
-            _view.ShowMessage("Game Saved!");
+            // _view.ShowMessage("Game Saved!");
             UpdateView();
         }
         catch (System.Exception e)
         {
-            _view.ShowMessage($"Save Failed: {e.Message}");
+            Debug.Log($"Save Failed: {e.Message}");
         }
     }
 
@@ -57,12 +59,12 @@ public class SaveLoadPresenter
             _harborPresenter.ClearAllShips();
 
             _saveLoadService.LoadGame(_resourcesModel, _harborModel, _timeController);
-            _view.ShowMessage("Game Loaded!");
+            // _view.ShowMessage("Game Loaded!");
             OnGameLoaded?.Invoke();
         }
         catch (System.Exception e)
         {
-            _view.ShowMessage($"Load Failed: {e.Message}");
+            Debug.Log($"Load Failed: {e.Message}");
         }
     }
 
@@ -85,7 +87,7 @@ public class SaveLoadPresenter
         _harborModel.OccupiedDockSlots = 0;
         _harborPresenter.AddStartingShip();
         
-        _view.ShowMessage("New Game Started!");
+        // _view.ShowMessage("New Game Started!");
         OnGameLoaded?.Invoke(); 
         UpdateView();
     }

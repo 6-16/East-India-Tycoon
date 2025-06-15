@@ -7,6 +7,7 @@ public class EntryPoint : MonoBehaviour
     private DeliveryGenerator _deliveryGenerator;
     private SeaCameraController _seaCameraController;
     [SerializeField] private SunMover _sunMover;
+    [SerializeField] private SoundController _soundController;
 
 
     // Views
@@ -43,7 +44,7 @@ public class EntryPoint : MonoBehaviour
 
         _timeController = new TimeController();
 
-        _resourcesPresenter = new ResourcesPresenter(_resourcesModel, _resourcesView);
+        _resourcesPresenter = new ResourcesPresenter(_resourcesModel, _resourcesView, _saveLoadView);
         _deliveriesPresenter = new DeliveriesPresenter(_deliveriesView);
         _shopPresenter = new ShopPresenter(_shopView, _resourcesModel);
         _harborPresenter = new HarborPresenter(_resourcesModel, _harborView, _harborModel, _deliveriesView, _shopPresenter);
